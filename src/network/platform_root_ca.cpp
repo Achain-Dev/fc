@@ -52,9 +52,7 @@ static void add_macos_root_cas(boost::asio::ssl::context& ctx) {
             }
             if(trustSettings == nullptr)
                continue;
-            if(CFArrayGetCount(trustSettings) == 0)
-               trust_as_root = true;
-            else for(CFIndex k = 0; k < CFArrayGetCount(trustSettings); k++) {
+            for(CFIndex k = 0; k < CFArrayGetCount(trustSettings); k++) {
                CFNumberRef cfNum;
                CFDictionaryRef tSetting = (CFDictionaryRef)CFArrayGetValueAtIndex(trustSettings, k);
                if(CFDictionaryGetValueIfPresent(tSetting, kSecTrustSettingsResult, (const void**)&cfNum)){
