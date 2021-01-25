@@ -40,6 +40,11 @@ namespace fc { namespace raw {
          {
             fc::raw::pack( s, v );
          }
+         
+         virtual void handle( const blob& v)const
+         {
+            fc::raw::pack( s, v );
+         }
         
          Stream& s;
         
